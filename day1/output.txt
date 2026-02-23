@@ -1,0 +1,5 @@
+Cleaned Text:
+hello i am abbas i love python
+
+Word Count: 7
+Character Count: 24
