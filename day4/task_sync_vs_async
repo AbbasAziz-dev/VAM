@@ -1,0 +1,51 @@
+import asyncio
+import time
+import httpx
+import requests
+
+URLS = {
+    "post": "https://jsonplaceholder.typicode.com/posts/1",
+    "user": "https://jsonplaceholder.typicode.com/users/1",
+    "todo": "https://jsonplaceholder.typicode.com/todos/1",
+}
+
+#sync
+def fetch_sync():
+    result={}
+    for key , url in URLS.items():
+        response = requests.get(url)
+        result[key]= response.json()
+    return result
+
+#asyn
+async def fetch_async():
+    async with httpx.AsyncClient() as client:
+        tasks =[
+            client.get(url)
+            for url in URLS.values()
+        ]
+        responses = await asyncio.gather(*tasks)
+        return {
+            key: response.json()
+            for key, response in zip(URLS.keys(), responses)
+        }
+    
+if __name__ == "__main__":
+
+    # Run SYNC
+    start_sync = time.time()
+    sync_result = fetch_sync()
+    end_sync = time.time()
+
+    print("\nSYNC RESULT:")
+    print(sync_result)
+    print(f"Sync execution time: {end_sync - start_sync:.2f} seconds")
+
+    # Run ASYNC
+    start_async = time.time()
+    async_result = asyncio.run(fetch_async())
+    end_async = time.time()
+
+    print("\nASYNC RESULT:")
+    print(async_result)
+    print(f"Async execution time: {end_async - start_async:.2f} seconds")
