@@ -1,0 +1,3 @@
+pydantic
+PyPDF2
+docx
