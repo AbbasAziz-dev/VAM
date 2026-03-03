@@ -1,0 +1,6 @@
+pydantic
+httpx
+pytest
+pytest-asyncio
+pymupdf
+python-docx
