@@ -3,8 +3,8 @@ import asyncio
 import json
 import logging
 from pathlib import Path
-from .logging_config import setup_logging
-from .processors.factory import get_processor
+from app.logging_config import setup_logging
+from app.processors.factory import get_processor
 
 
 async def process_folder(folder_path: str):
