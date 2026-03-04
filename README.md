@@ -7,12 +7,14 @@ The focus of this work is on writing **production-style Python code** including 
 ---
 
 ## Repository Structure
+
+```
 VAM
-│
 ├── daily-tasks
-│
 └── Miniprojects
-└── smart_document_processor
+    └── smart_document_processor
+```
+
 
 - **daily-tasks** – Small implementations and exercises to practice core Python engineering concepts such as OOP, Pydantic models, async programming, API handling, and testing.
 
